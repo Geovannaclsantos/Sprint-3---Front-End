@@ -1,0 +1,12 @@
+INTEGRANTES DO GRUPO — Care Plus | Sprint 3
+Challenge FIAP — 1º Ano Engenharia de Software
+Disciplina: Front-End Design
+============================================
+
+Geovanna Caroline Lima Santos — RM: 567754
+Helton Pacheco dos Santos      — RM: 567113
+Gustavo Firmino Barbosa        — RM: 566903
+
+Projeto: Care City — Jornada Gamificada do Cuidado Contínuo
+Sprint: 3
+Entrega: Front-End Design (HTML + CSS + Bootstrap + JS)

@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Care City — Jornada Gamificada do Cuidado Contínuo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .hero-section {
+      background: linear-gradient(135deg, #0F2347 0%, #1A3A6B 55%, #2A5298 100%);
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 4rem 0;
+      color: #fff;
+    }
+    .hero-section::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        radial-gradient(circle at 70% 30%, rgba(0,201,167,0.15) 0%, transparent 60%),
+        radial-gradient(circle at 20% 80%, rgba(42,82,152,0.4) 0%, transparent 50%);
+    }
+    .hero-section > .container { position: relative; z-index: 2; }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(0,201,167,0.18);
+      border: 1px solid rgba(0,201,167,0.35);
+      color: #00ffdb;
+      border-radius: 50px;
+      padding: 0.4rem 1rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      font-family: 'Sora', sans-serif;
+      margin-bottom: 1.5rem;
+    }
+    .hero-title {
+      font-family: 'Sora', sans-serif;
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 1.25rem;
+    }
+    .hero-title .highlight {
+      background: linear-gradient(90deg, #00C9A7, #7BE0D0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-subtitle {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.75);
+      max-width: 540px;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+    .city-preview {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius);
+      padding: 2rem;
+      text-align: center;
+      backdrop-filter: blur(10px);
+    }
+    .city-preview-icon {
+      width: 220px;
+      height: 220px;
+      margin: 0 auto 1rem;
+      background-image: url('img/care-city.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      filter: drop-shadow(0 8px 24px rgba(0,201,167,0.35));
+    }
+    .benefits-section {
+      padding: 5rem 0;
+      background: var(--surface);
+    }
+    .benefit-card {
+      background: var(--surface-card);
+      border-radius: var(--radius);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      border: 1.5px solid var(--border);
+      transition: all 0.25s;
+      height: 100%;
+    }
+    .benefit-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+    .benefit-icon {
+      width: 64px; height: 64px;
+      background: rgba(0,201,167,0.1);
+      border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 2rem;
+      margin: 0 auto 1rem;
+    }
+    .section-title {
+      font-family: 'Sora', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      text-align: center;
+      color: var(--text-main);
+      margin-bottom: 0.5rem;
+    }
+    .section-subtitle {
+      color: var(--text-muted);
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .areas-section { padding: 5rem 0; background: #fff; }
+    .area-mini {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+      background: var(--surface);
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      transition: all 0.2s;
+    }
+    .area-mini:hover { transform: translateX(4px); border-color: var(--accent); }
+    .area-mini-icon {
+      width: 48px; height: 48px;
+      border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem;
+      flex-shrink: 0;
+    }
+    .cta-section {
+      padding: 4rem 0;
+      background: linear-gradient(135deg, #1A3A6B 0%, #2A5298 100%);
+      color: #fff;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero-section">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-7">
+        <span class="hero-badge"><i class="bi bi-buildings"></i> Care Plus · Sprint 3</span>
+        <h1 class="hero-title">
+          Sua saúde constrói<br>
+          uma <span class="highlight">cidade viva</span>
+        </h1>
+        <p class="hero-subtitle">
+          A Care City transforma o cuidado preventivo em uma cidade digital interativa.
+          Cada hábito saudável fortalece uma área da cidade. Quanto mais você cuida de você, mais sua cidade evolui.
+        </p>
+        <div class="d-flex gap-3 flex-wrap">
+          <a href="care-city.html" class="btn-cp-accent">
+            <i class="bi bi-buildings-fill"></i> Ver minha cidade
+          </a>
+          <a href="missoes.html" class="btn-cp-outline" style="color:#fff; border-color:rgba(255,255,255,0.4); background:rgba(255,255,255,0.08);">
+            <i class="bi bi-flag-fill"></i> Ver missões
+          </a>
+        </div>
+      </div>
+      <div class="col-lg-5 mt-5 mt-lg-0">
+        <div class="city-preview">
+          <div class="city-preview-icon" role="img" aria-label="Ilustração da Care City"></div>
+          <h3 style="font-family:'Sora',sans-serif; font-weight:700; font-size:1.25rem; margin-bottom:0.3rem;">Cidade em Construção</h3>
+          <p style="color:rgba(255,255,255,0.6); font-size:0.85rem; margin-bottom:1.25rem;">Comece a primeira missão e veja sua cidade nascer</p>
+          <div class="progress-cp" style="background:rgba(255,255,255,0.15); height:10px;">
+            <div class="progress-cp-bar pulse" style="width:8%;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section class="benefits-section">
+  <div class="container">
+    <h2 class="section-title">Por que a Care City?</h2>
+    <p class="section-subtitle">Saúde preventiva transformada em experiência visual e contínua</p>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-3">
+        <div class="benefit-card fade-in-up">
+          <div class="benefit-icon">🛡️</div>
+          <h3 style="font-size:1.05rem; font-weight:700; margin-bottom:0.5rem;">Prevenção Contínua</h3>
+          <p style="color:var(--text-muted); font-size:0.88rem; margin:0;">Hábitos diários monitorados que reduzem riscos futuros.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="benefit-card fade-in-up delay-1">
+          <div class="benefit-icon">🎮</div>
+          <h3 style="font-size:1.05rem; font-weight:700; margin-bottom:0.5rem;">Gamificação Ética</h3>
+          <p style="color:var(--text-muted); font-size:0.88rem; margin:0;">Missões, pontos e evolução não punitiva — você compete com você mesma.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="benefit-card fade-in-up delay-2">
+          <div class="benefit-icon">📈</div>
+          <h3 style="font-size:1.05rem; font-weight:700; margin-bottom:0.5rem;">Progresso Visível</h3>
+          <p style="color:var(--text-muted); font-size:0.88rem; margin:0;">Acompanhe cada área da sua saúde crescer em tempo real.</p>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3">
+        <div class="benefit-card fade-in-up delay-3">
+          <div class="benefit-icon">⌚</div>
+          <h3 style="font-size:1.05rem; font-weight:700; margin-bottom:0.5rem;">Wearables Integrados</h3>
+          <p style="color:var(--text-muted); font-size:0.88rem; margin:0;">Conecte com smartwatch e sensores para insights automáticos.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AREAS PREVIEW -->
+<section class="areas-section">
+  <div class="container">
+    <h2 class="section-title">As 6 áreas da Care City</h2>
+    <p class="section-subtitle">Cada dimensão da sua saúde tem um espaço próprio na cidade</p>
+    <div class="row g-3">
+      <div class="col-md-6 col-lg-4">
+        <div class="area-mini">
+          <div class="area-mini-icon" style="background:#FEF3C7;">⚡</div>
+          <div>
+            <div style="font-family:'Sora',sans-serif; font-weight:700; font-size:0.95rem;">Usina de Energia</div>
+            <div style="color:var(--text-muted); font-size:0.8rem;">Sono e descanso</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="area-mini">
+          <div class="area-mini-icon" style="background:#D1FAE5;">🌿</div>
+          <div>
+            <div style="font-family:'Sora',sans-serif; font-weight:700; font-size:0.95rem;">Parque do Equilíbrio</div>
+            <div style="color:var(--text-muted); font-size:0.8rem;">Saúde mental</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="area-mini">
+          <div class="area-mini-icon" style="background:#DBEAFE;">💧</div>
+          <div>
+            <div style="font-family:'Sora',sans-serif; font-weight:700; font-size:0.95rem;">Rios da Hidratação</div>
+            <div style="color:var(--text-muted); font-size:0.8rem;">Ingestão de água</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="area-mini">
+          <div class="area-mini-icon" style="background:#EDE9FE;">🏃</div>
+          <div>
+            <div style="font-family:'Sora',sans-serif; font-weight:700; font-size:0.95rem;">Avenidas Ativas</div>
+            <div style="color:var(--text-muted); font-size:0.8rem;">Movimento físico</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="area-mini">
+          <div class="area-mini-icon" style="background:#FEE2E2;">🏥</div>
+          <div>
+            <div style="font-family:'Sora',sans-serif; font-weight:700; font-size:0.95rem;">Hospital Preventivo</div>
+            <div style="color:var(--text-muted); font-size:0.8rem;">Check-ups e vacinas</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4">
+        <div class="area-mini">
+          <div class="area-mini-icon" style="background:#CFFAFE;">📊</div>
+          <div>
+            <div style="font-family:'Sora',sans-serif; font-weight:700; font-size:0.95rem;">Centro de Dados Vital</div>
+            <div style="color:var(--text-muted); font-size:0.8rem;">Wearables e sensores</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <h2 style="font-family:'Sora',sans-serif; font-weight:800; font-size:1.8rem; margin-bottom:0.5rem;">Comece sua jornada hoje</h2>
+    <p style="color:rgba(255,255,255,0.7); margin-bottom:1.5rem;">Complete missões, evolua sua cidade e cuide da sua saúde de forma contínua.</p>
+    <a href="care-city.html" class="btn-cp-accent" style="padding:0.85rem 2rem; font-size:1rem;">
+      <i class="bi bi-arrow-right"></i> Iniciar jornada preventiva
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="cp-footer">
+  <div class="container text-center">
+    <div style="font-family:'Sora',sans-serif; font-weight:800; font-size:1.1rem; color:#fff; margin-bottom:0.5rem;">
+      <span style="color:var(--accent);">●</span> Care Plus · Care City
+    </div>
+    <p style="margin:0; font-size:0.82rem;">FIAP 2025 · 1º Ano Engenharia de Software · Sprint 3 · Front-End Design</p>
+  </div>
+</footer>
+
+</body>
+</html>

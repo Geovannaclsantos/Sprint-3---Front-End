@@ -1,0 +1,277 @@
+/* ========================================
+   Care City — Estilos do Mapa Interativo
+   ======================================== */
+
+/* SIDEBAR (compartilhada) */
+.sidebar {
+  width: 240px;
+  min-height: 100vh;
+  background: var(--primary-dark);
+  position: fixed;
+  top: 0; left: 0;
+  padding: 1.5rem 1rem;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+}
+.sidebar-brand {
+  font-family: 'Sora', sans-serif;
+  font-weight: 800;
+  font-size: 1.3rem;
+  color: #fff;
+  padding: 0.5rem;
+  margin-bottom: 2rem;
+}
+.sidebar-nav a {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.7rem 0.85rem;
+  border-radius: var(--radius-sm);
+  color: rgba(255,255,255,0.65);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.2s;
+  margin-bottom: 0.25rem;
+}
+.sidebar-nav a:hover { background: rgba(255,255,255,0.1); color: #fff; }
+.sidebar-nav a.active { background: rgba(0,201,167,0.2); color: var(--accent); }
+.sidebar-nav a i { font-size: 1.1rem; width: 20px; text-align: center; }
+.sidebar-bottom { margin-top: auto; }
+
+.main-content { margin-left: 240px; padding: 2rem; }
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+/* ===== HEADER DA CIDADE ===== */
+.city-hero {
+  background: linear-gradient(135deg, #0F2347 0%, #1A3A6B 50%, #2A5298 100%);
+  border-radius: var(--radius);
+  padding: 1.5rem 2rem;
+  color: #fff;
+  margin-bottom: 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+.city-hero::after {
+  content: '';
+  position: absolute;
+  right: 1rem; top: 50%;
+  transform: translateY(-50%);
+  width: 200px;
+  height: 200px;
+  background-image: url('../img/care-city.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.85;
+  pointer-events: none;
+}
+.city-stage-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(0,201,167,0.18);
+  border: 1px solid rgba(0,201,167,0.35);
+  color: #7BE0D0;
+  border-radius: 50px;
+  padding: 0.3rem 0.85rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+/* ===== LAYOUT MAPA + PAINEL ===== */
+.city-grid {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 1.25rem;
+}
+@media (max-width: 1199px) {
+  .city-grid { grid-template-columns: 1fr; }
+}
+
+/* ===== MAP CONTAINER ===== */
+.city-map-card {
+  background: var(--surface-card);
+  border-radius: var(--radius);
+  border: 1.5px solid var(--border);
+  overflow: hidden;
+}
+.city-map-svg { display: block; width: 100%; height: auto; background: #c8dbb0; }
+
+/* === Hover nas áreas do SVG === */
+.city-area { cursor: pointer; transition: opacity 0.25s; }
+.city-area:hover { filter: brightness(1.08); }
+.city-area.dim { opacity: 0.5; }
+.city-highlight {
+  fill: none;
+  stroke: var(--primary);
+  stroke-width: 3;
+  pointer-events: none;
+}
+
+/* === Legenda do mapa === */
+.city-legend {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  padding: 0.75rem;
+  background: var(--surface-card);
+  border-top: 1.5px solid var(--border);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+.city-legend-dot {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.city-legend-dot::before {
+  content: '';
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+.city-legend-dot.amber::before { background: #F4A261; }
+.city-legend-dot.gray::before  { background: #94a3b8; }
+
+/* ===== PAINEL LATERAL ===== */
+.city-side { display: flex; flex-direction: column; gap: 1rem; }
+
+.city-detail-card {
+  background: var(--surface-card);
+  border-radius: var(--radius);
+  border: 1.5px solid var(--border);
+  padding: 1.25rem;
+  min-height: 180px;
+  transition: border-color 0.2s;
+}
+.city-detail-card.highlighted { border-color: var(--accent); }
+
+.city-detail-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 160px;
+  color: var(--text-light);
+  text-align: center;
+  padding: 0.5rem 0;
+}
+.city-detail-empty .city-img {
+  width: 150px;
+  height: 120px;
+  background-image: url('../img/care-city.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-bottom: 0.5rem;
+}
+.city-detail-empty .city-img-text { font-weight: 500; font-size: 0.85rem; color: var(--text-muted); }
+
+.area-status-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.2rem 0.7rem;
+  border-radius: 50px;
+}
+.area-status-protegido { color: #066c46; background: #d1fae5; }
+.area-status-estavel   { color: #944c0a; background: #fef3c7; }
+.area-status-atencao   { color: #831f1f; background: #fee2e2; }
+
+.city-tip {
+  background: rgba(0,201,167,0.08);
+  border-left: 3px solid var(--accent);
+  padding: 0.6rem 0.8rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-style: italic;
+  line-height: 1.5;
+  margin-top: 0.75rem;
+}
+
+/* Lista de áreas no painel */
+.area-list-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 0.6rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background 0.15s;
+  border: none;
+  background: transparent;
+  width: 100%;
+  text-align: left;
+}
+.area-list-item:hover, .area-list-item.active { background: var(--surface); }
+.area-list-item .area-mini-bar {
+  flex: 1;
+  background: var(--border);
+  height: 4px;
+  border-radius: 50px;
+  overflow: hidden;
+}
+.area-list-item .area-mini-bar > span {
+  display: block;
+  height: 100%;
+  border-radius: 50px;
+  transition: width 0.6s;
+}
+.area-list-item .area-pct {
+  font-size: 0.78rem;
+  font-weight: 700;
+  min-width: 36px;
+  text-align: right;
+}
+
+/* ===== TOAST / FEEDBACK ===== */
+.cp-toast {
+  position: fixed;
+  bottom: 2rem; right: 2rem;
+  background: var(--surface-card);
+  border-radius: var(--radius);
+  border: 1.5px solid var(--accent);
+  box-shadow: var(--shadow-md);
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  z-index: 1000;
+  animation: toastIn 0.35s ease-out;
+  max-width: 360px;
+}
+@keyframes toastIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.cp-toast-icon {
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+.cp-toast-title { font-family: 'Sora', sans-serif; font-weight: 700; font-size: 0.92rem; margin-bottom: 0.15rem; }
+.cp-toast-msg { font-size: 0.78rem; color: var(--text-muted); }
+
+/* Responsivo */
+@media (max-width: 991px) {
+  .sidebar { display: none; }
+  .main-content { margin-left: 0; padding: 1rem; }
+  .city-hero { padding: 1.25rem 1.5rem; }
+  .city-hero::after { font-size: 3rem; right: 1rem; }
+}

@@ -1,0 +1,14 @@
+[
+  { "id": 1, "title": "Registrar humor do dia", "category": "Saúde Mental", "points": 20, "difficulty": "Fácil", "completed": false, "area": "parque" },
+  { "id": 2, "title": "Beber 2L de água", "category": "Hidratação", "points": 25, "difficulty": "Fácil", "completed": false, "area": "rios" },
+  { "id": 3, "title": "Dormir pelo menos 7 horas", "category": "Sono", "points": 30, "difficulty": "Médio", "completed": false, "area": "usina" },
+  { "id": 4, "title": "Fazer caminhada leve (20 min)", "category": "Movimento", "points": 35, "difficulty": "Médio", "completed": false, "area": "avenidas" },
+  { "id": 5, "title": "Agendar check-up médico", "category": "Check-up", "points": 50, "difficulty": "Fácil", "completed": false, "area": "hospital" },
+  { "id": 6, "title": "Registrar sintomas do dia", "category": "Dados Vital", "points": 20, "difficulty": "Fácil", "completed": false, "area": "dados" },
+  { "id": 7, "title": "Atualizar vacinação", "category": "Check-up", "points": 60, "difficulty": "Difícil", "completed": false, "area": "hospital" },
+  { "id": 8, "title": "Fazer pausa de descanso (10 min)", "category": "Saúde Mental", "points": 15, "difficulty": "Fácil", "completed": false, "area": "parque" },
+  { "id": 9, "title": "Meditar por 5 minutos", "category": "Saúde Mental", "points": 25, "difficulty": "Fácil", "completed": false, "area": "parque" },
+  { "id": 10, "title": "Beber 500ml de água ao acordar", "category": "Hidratação", "points": 15, "difficulty": "Fácil", "completed": false, "area": "rios" },
+  { "id": 11, "title": "Fazer alongamento (15 min)", "category": "Movimento", "points": 25, "difficulty": "Fácil", "completed": false, "area": "avenidas" },
+  { "id": 12, "title": "Registrar batimentos cardíacos", "category": "Dados Vital", "points": 20, "difficulty": "Fácil", "completed": false, "area": "dados" }
+]

@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Care Plus — Care City</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/care-city.css" />
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<aside class="sidebar" aria-label="Menu principal">
+  <div class="sidebar-brand"><span style="color:var(--accent);">●</span> Care Plus</div>
+  <nav class="sidebar-nav">
+    <a href="dashboard.html"><i class="bi bi-grid-1x2-fill"></i> Dashboard</a>
+    <a href="care-city.html" class="active"><i class="bi bi-buildings-fill"></i> Care City</a>
+    <a href="missoes.html"><i class="bi bi-flag-fill"></i> Missões</a>
+    <a href="vitais.html"><i class="bi bi-heart-pulse-fill"></i> Dados Vitais</a>
+    <a href="recompensas.html"><i class="bi bi-gift-fill"></i> Recompensas</a>
+    <a href="perfil.html"><i class="bi bi-person-fill"></i> Perfil</a>
+  </nav>
+  <div class="sidebar-bottom">
+    <div style="background:rgba(0,201,167,0.12);border-radius:var(--radius-sm);padding:1rem;margin-bottom:1rem;">
+      <div style="color:var(--accent);font-size:0.78rem;font-weight:600;margin-bottom:0.25rem;">🔥 Streak atual</div>
+      <div style="font-family:'Sora',sans-serif;font-size:1.8rem;font-weight:800;color:#fff;line-height:1;">7 dias</div>
+      <div style="color:rgba(255,255,255,0.5);font-size:0.75rem;">Não perca hoje!</div>
+    </div>
+    <a href="login.html" style="display:flex;align-items:center;gap:0.75rem;padding:0.7rem 0.85rem;border-radius:var(--radius-sm);color:rgba(255,255,255,0.5);text-decoration:none;font-size:0.9rem;">
+      <i class="bi bi-box-arrow-left"></i> Sair
+    </a>
+  </div>
+</aside>
+
+<!-- MAIN -->
+<main class="main-content">
+
+  <!-- TOPBAR -->
+  <header class="topbar">
+    <div>
+      <h1 style="font-size:1.5rem; font-weight:800; margin:0;">Care City</h1>
+      <p style="color:var(--text-muted);font-size:0.88rem; margin:0;">Sua jornada de saúde construída como uma cidade viva</p>
+    </div>
+    <div class="d-flex align-items-center gap-3">
+      <div class="xp-badge"><i class="bi bi-star-fill"></i> <span id="city-points">0</span> XP</div>
+      <div class="level-badge"><i class="bi bi-shield-check"></i> Nível 8</div>
+      <a href="perfil.html"><div class="avatar">AM</div></a>
+    </div>
+  </header>
+
+  <!-- HERO CIDADE -->
+  <section class="city-hero fade-in-up">
+    <span class="city-stage-pill">
+      <span id="city-stage-icon">🏗️</span>
+      <span id="city-stage-label">Cidade em Construção</span>
+    </span>
+    <h2 style="font-size:1.4rem; font-weight:700; margin:0 0 0.3rem;">Bem-vinda à Care City, Ana 👋</h2>
+    <p style="color:rgba(255,255,255,0.75); font-size:0.88rem; margin:0 0 1rem; max-width:560px;">
+      Cada hábito saudável fortalece uma área da cidade. Passe o mouse sobre as áreas para ver detalhes ou conclua missões para evoluir.
+    </p>
+    <div class="progress-cp mb-1" style="background:rgba(255,255,255,0.15); height:10px; max-width:480px;">
+      <div class="progress-cp-bar" id="city-progress-bar" style="width:0%; background:linear-gradient(90deg,#00C9A7,#7BE0D0);"></div>
+    </div>
+    <div style="font-size:0.78rem; color:rgba(255,255,255,0.6);">
+      Cidade <span id="city-progress-pct">0%</span> evoluída · <span id="city-missions">0/0</span> missões concluídas
+    </div>
+  </section>
+
+  <!-- GRID MAPA + PAINEL -->
+  <section class="city-grid fade-in-up delay-1">
+
+    <!-- ============ MAPA INTERATIVO ============ -->
+    <div>
+      <article class="city-map-card">
+        <svg class="city-map-svg" viewBox="0 0 680 560" xmlns="http://www.w3.org/2000/svg" role="img"
+             aria-labelledby="city-map-title city-map-desc">
+          <title id="city-map-title">Mapa interativo da Care City</title>
+          <desc id="city-map-desc">Mapa visual com 6 áreas representando dimensões da saúde preventiva</desc>
+
+          <!-- Ground / grass -->
+          <rect x="0" y="0" width="680" height="560" fill="#c8dbb0"/>
+
+          <!-- Roads horizontal -->
+          <rect x="0" y="248" width="680" height="64" fill="#c4b59a"/>
+          <rect x="30" y="277" width="40" height="6" rx="3" fill="#e8d8b0" opacity="0.7"/>
+          <rect x="90" y="277" width="40" height="6" rx="3" fill="#e8d8b0" opacity="0.7"/>
+          <rect x="150" y="277" width="40" height="6" rx="3" fill="#e8d8b0" opacity="0.7"/>
+          <rect x="210" y="277" width="40" height="6" rx="3" fill="#e8d8b0" opacity="0.7"/>
+          <rect x="390" y="277" width="40" height="6" rx="3" fill="#e8d8b0" opacity="0.7"/>
+          <rect x="450" y="277" width="40" height="6" rx="3" fill="#e8d8b0" opacity="0.7"/>
+          <rect x="510" y="277" width="40" height="6" rx="3" fill="#e8d8b0" opacity="0.7"/>
+          <rect x="570" y="277" width="40" height="6" rx="3" fill="#e8d8b0" opacity="0.7"/>
+          <rect x="630" y="277" width="40" height="6" rx="3" fill="#e8d8b0" opacity="0.7"/>
+          <!-- Road vertical -->
+          <rect x="308" y="0" width="64" height="560" fill="#c4b59a"/>
+          <rect x="337" y="30" width="6" height="36" rx="3" fill="#e8d8b0" opacity="0.7"/>
+          <rect x="337" y="90" width="6" height="36" rx="3" fill="#e8d8b0" opacity="0.7"/>
+          <rect x="337" y="150" width="6" height="36" rx="3" fill="#e8d8b0" opacity="0.7"/>
+          <rect x="337" y="380" width="6" height="36" rx="3" fill="#e8d8b0" opacity="0.7"/>
+          <rect x="337" y="440" width="6" height="36" rx="3" fill="#e8d8b0" opacity="0.7"/>
+          <rect x="337" y="500" width="6" height="36" rx="3" fill="#e8d8b0" opacity="0.7"/>
+          <!-- Intersection -->
+          <rect x="308" y="248" width="64" height="64" fill="#bfb09a"/>
+          <rect x="316" y="249" width="6" height="62" fill="#e0d0b0" opacity="0.5"/>
+          <rect x="326" y="249" width="6" height="62" fill="#e0d0b0" opacity="0.5"/>
+          <rect x="336" y="249" width="6" height="62" fill="#e0d0b0" opacity="0.5"/>
+          <rect x="346" y="249" width="6" height="62" fill="#e0d0b0" opacity="0.5"/>
+          <rect x="356" y="249" width="6" height="62" fill="#e0d0b0" opacity="0.5"/>
+          <!-- Sidewalks -->
+          <rect x="0" y="242" width="680" height="6" fill="#d4c8b0"/>
+          <rect x="0" y="312" width="680" height="6" fill="#d4c8b0"/>
+          <rect x="302" y="0" width="6" height="560" fill="#d4c8b0"/>
+          <rect x="372" y="0" width="6" height="560" fill="#d4c8b0"/>
+
+          <!-- ============================ USINA ============================ -->
+          <g id="area-usina" class="city-area">
+            <rect x="20" y="20" width="272" height="212" rx="8" fill="#d4e8c0" stroke="#b8d0a0" stroke-width="1"/>
+            <!-- Factory main -->
+            <rect x="40" y="90" width="100" height="130" rx="4" fill="#f59e0b" opacity="0.9"/>
+            <rect x="40" y="90" width="100" height="130" rx="4" fill="none" stroke="#d97706" stroke-width="1.5"/>
+            <!-- Windows -->
+            <rect x="52" y="100" width="16" height="20" rx="2" fill="#fff9c4" opacity="0.8"/>
+            <rect x="80" y="100" width="16" height="20" rx="2" fill="#fff9c4" opacity="0.8"/>
+            <rect x="52" y="130" width="16" height="20" rx="2" fill="#fff9c4" opacity="0.8"/>
+            <rect x="80" y="130" width="16" height="20" rx="2" fill="#fff9c4" opacity="0.8"/>
+            <rect x="52" y="160" width="16" height="20" rx="2" fill="#fff9c4" opacity="0.8"/>
+            <rect x="80" y="160" width="16" height="20" rx="2" fill="#fff9c4" opacity="0.8"/>
+            <!-- Chimneys -->
+            <rect x="55" y="55" width="16" height="40" rx="3" fill="#b45309"/>
+            <rect x="80" y="45" width="20" height="50" rx="3" fill="#b45309"/>
+            <rect x="108" y="60" width="14" height="35" rx="3" fill="#b45309"/>
+            <!-- Smoke (>=35) -->
+            <g data-area="usina" data-show-from="35">
+              <ellipse cx="63" cy="48" rx="10" ry="7" fill="white" opacity="0.6"/>
+              <ellipse cx="75" cy="40" rx="8" ry="6" fill="white" opacity="0.4"/>
+              <ellipse cx="90" cy="35" rx="12" ry="8" fill="white" opacity="0.5"/>
+              <ellipse cx="115" cy="52" rx="9" ry="6" fill="white" opacity="0.4"/>
+            </g>
+            <!-- Solar panels (>=50) -->
+            <g data-area="usina" data-show-from="50">
+              <rect x="160" y="100" width="110" height="60" rx="4" fill="#1A3A6B" opacity="0.7"/>
+              <rect x="164" y="104" width="22" height="13" rx="1" fill="#3B82F6" opacity="0.6" stroke="#1A3A6B" stroke-width="0.5"/>
+              <rect x="190" y="104" width="22" height="13" rx="1" fill="#3B82F6" opacity="0.6" stroke="#1A3A6B" stroke-width="0.5"/>
+              <rect x="216" y="104" width="22" height="13" rx="1" fill="#3B82F6" opacity="0.6" stroke="#1A3A6B" stroke-width="0.5"/>
+              <rect x="242" y="104" width="22" height="13" rx="1" fill="#3B82F6" opacity="0.6" stroke="#1A3A6B" stroke-width="0.5"/>
+              <rect x="164" y="121" width="22" height="13" rx="1" fill="#3B82F6" opacity="0.6" stroke="#1A3A6B" stroke-width="0.5"/>
+              <rect x="190" y="121" width="22" height="13" rx="1" fill="#3B82F6" opacity="0.6" stroke="#1A3A6B" stroke-width="0.5"/>
+              <rect x="216" y="121" width="22" height="13" rx="1" fill="#3B82F6" opacity="0.6" stroke="#1A3A6B" stroke-width="0.5"/>
+              <rect x="242" y="121" width="22" height="13" rx="1" fill="#3B82F6" opacity="0.6" stroke="#1A3A6B" stroke-width="0.5"/>
+              <rect x="164" y="138" width="22" height="13" rx="1" fill="#3B82F6" opacity="0.6" stroke="#1A3A6B" stroke-width="0.5"/>
+              <rect x="190" y="138" width="22" height="13" rx="1" fill="#3B82F6" opacity="0.6" stroke="#1A3A6B" stroke-width="0.5"/>
+              <rect x="216" y="138" width="22" height="13" rx="1" fill="#3B82F6" opacity="0.6" stroke="#1A3A6B" stroke-width="0.5"/>
+              <rect x="242" y="138" width="22" height="13" rx="1" fill="#3B82F6" opacity="0.6" stroke="#1A3A6B" stroke-width="0.5"/>
+            </g>
+            <!-- Label -->
+            <rect x="28" y="194" width="155" height="28" rx="5" fill="white" opacity="0.9"/>
+            <text x="105" y="213" text-anchor="middle" fill="#b45309" style="font-size:11px;font-weight:700;font-family:Inter,sans-serif">⚡ Usina de Energia</text>
+            <rect x="190" y="194" width="90" height="28" rx="5" fill="#f59e0b"/>
+            <text x="235" y="213" text-anchor="middle" fill="white" id="pct-usina" style="font-size:12px;font-weight:800;font-family:Inter,sans-serif">0%</text>
+          </g>
+          <rect class="city-highlight" data-area="usina" x="20" y="20" width="272" height="212" rx="8" style="display:none"/>
+
+          <!-- ============================ HOSPITAL ============================ -->
+          <g id="area-hospital" class="city-area">
+            <rect x="388" y="20" width="272" height="212" rx="8" fill="#f8e8e8" stroke="#f0c0c0" stroke-width="1"/>
+            <rect x="430" y="60" width="130" height="160" rx="4" fill="#ef4444" opacity="0.9"/>
+            <rect x="430" y="60" width="130" height="160" rx="4" fill="none" stroke="#dc2626" stroke-width="1.5"/>
+            <!-- Cross -->
+            <rect x="477" y="70" width="36" height="12" rx="3" fill="white"/>
+            <rect x="487" y="63" width="16" height="28" rx="3" fill="white"/>
+            <!-- Windows -->
+            <rect x="440" y="115" width="22" height="18" rx="2" fill="#fff" opacity="0.7"/>
+            <rect x="474" y="115" width="22" height="18" rx="2" fill="#fff" opacity="0.7"/>
+            <rect x="508" y="115" width="22" height="18" rx="2" fill="#fff" opacity="0.7"/>
+            <rect x="440" y="143" width="22" height="18" rx="2" fill="#fff" opacity="0.7"/>
+            <rect x="474" y="143" width="22" height="18" rx="2" fill="#fff" opacity="0.7"/>
+            <rect x="508" y="143" width="22" height="18" rx="2" fill="#fff" opacity="0.7"/>
+            <!-- Entrance -->
+            <rect x="469" y="180" width="52" height="40" rx="3" fill="#dc2626" opacity="0.7"/>
+            <rect x="479" y="185" width="15" height="30" rx="2" fill="white" opacity="0.9"/>
+            <rect x="496" y="185" width="15" height="30" rx="2" fill="white" opacity="0.9"/>
+            <!-- Ambulance (>=35) -->
+            <g data-area="hospital" data-show-from="35">
+              <rect x="568" y="170" width="68" height="30" rx="4" fill="white" stroke="#dc2626" stroke-width="1"/>
+              <rect x="568" y="170" width="68" height="30" rx="4" fill="#ef4444" opacity="0.25"/>
+              <text x="583" y="190" fill="#dc2626" style="font-size:14px;font-family:Inter,sans-serif">🚑</text>
+              <circle cx="582" cy="202" r="6" fill="#555"/>
+              <circle cx="624" cy="202" r="6" fill="#555"/>
+            </g>
+            <!-- Label -->
+            <rect x="396" y="194" width="160" height="28" rx="5" fill="white" opacity="0.9"/>
+            <text x="476" y="213" text-anchor="middle" fill="#dc2626" style="font-size:11px;font-weight:700;font-family:Inter,sans-serif">🏥 Hospital Preventivo</text>
+            <rect x="566" y="194" width="84" height="28" rx="5" fill="#ef4444"/>
+            <text x="608" y="213" text-anchor="middle" fill="white" id="pct-hospital" style="font-size:12px;font-weight:800;font-family:Inter,sans-serif">0%</text>
+          </g>
+          <rect class="city-highlight" data-area="hospital" x="388" y="20" width="272" height="212" rx="8" style="display:none"/>
+
+          <!-- ============================ RIOS ============================ -->
+          <g id="area-rios" class="city-area">
+            <rect x="22" y="256" width="278" height="44" rx="6" fill="#bfdbfe" opacity="0.95"/>
+            <!-- Ripples (>=20) -->
+            <g data-area="rios" data-show-from="20">
+              <ellipse cx="40" cy="278" rx="16" ry="5" fill="none" stroke="#3b82f6" stroke-width="1.5" opacity="0.6"/>
+              <ellipse cx="90" cy="278" rx="16" ry="5" fill="none" stroke="#3b82f6" stroke-width="1.5" opacity="0.6"/>
+              <ellipse cx="140" cy="278" rx="16" ry="5" fill="none" stroke="#3b82f6" stroke-width="1.5" opacity="0.6"/>
+              <ellipse cx="240" cy="278" rx="16" ry="5" fill="none" stroke="#3b82f6" stroke-width="1.5" opacity="0.6"/>
+            </g>
+            <!-- Boat (>=50) -->
+            <g data-area="rios" data-show-from="50">
+              <rect x="170" y="264" width="40" height="16" rx="4" fill="#1d4ed8"/>
+              <polygon points="190,264 190,250 207,264" fill="#f59e0b"/>
+            </g>
+            <!-- Label -->
+            <rect x="28" y="259" width="148" height="22" rx="4" fill="white" opacity="0.85"/>
+            <text x="102" y="274" text-anchor="middle" fill="#1e40af" style="font-size:10px;font-weight:700;font-family:Inter,sans-serif">💧 Rios da Hidratação</text>
+            <rect x="184" y="259" width="56" height="22" rx="4" fill="#3b82f6"/>
+            <text x="212" y="274" text-anchor="middle" fill="white" id="pct-rios" style="font-size:11px;font-weight:800;font-family:Inter,sans-serif">0%</text>
+          </g>
+          <rect class="city-highlight" data-area="rios" x="22" y="249" width="278" height="62" rx="6" style="display:none"/>
+
+          <!-- ============================ DADOS VITAL ============================ -->
+          <g id="area-dados" class="city-area">
+            <rect x="390" y="252" width="276" height="56" rx="6" fill="#cffafe" opacity="0.95" stroke="#06b6d4" stroke-width="1"/>
+            <!-- Server racks -->
+            <g>
+              <rect x="400" y="258" width="34" height="40" rx="3" fill="#06b6d4" opacity="0.8"/>
+              <rect x="403" y="261" width="28" height="6" rx="1" fill="#00C9A7" opacity="0.7"/>
+              <rect x="403" y="270" width="28" height="6" rx="1" fill="#00C9A7" opacity="0.7"/>
+              <rect x="403" y="279" width="28" height="6" rx="1" fill="#00C9A7" opacity="0.7"/>
+              <rect x="403" y="288" width="28" height="6" rx="1" fill="#00C9A7" opacity="0.7"/>
+            </g>
+            <g>
+              <rect x="444" y="258" width="34" height="40" rx="3" fill="#06b6d4" opacity="0.8"/>
+              <rect x="447" y="261" width="28" height="6" rx="1" fill="#00C9A7" opacity="0.7"/>
+              <rect x="447" y="270" width="28" height="6" rx="1" fill="#00C9A7" opacity="0.7"/>
+              <rect x="447" y="279" width="28" height="6" rx="1" fill="#00C9A7" opacity="0.7"/>
+              <rect x="447" y="288" width="28" height="6" rx="1" fill="#00C9A7" opacity="0.7"/>
+            </g>
+            <g>
+              <rect x="488" y="258" width="34" height="40" rx="3" fill="#06b6d4" opacity="0.8"/>
+              <rect x="491" y="261" width="28" height="6" rx="1" fill="#00C9A7" opacity="0.7"/>
+              <rect x="491" y="270" width="28" height="6" rx="1" fill="#00C9A7" opacity="0.7"/>
+              <rect x="491" y="279" width="28" height="6" rx="1" fill="#00C9A7" opacity="0.7"/>
+              <rect x="491" y="288" width="28" height="6" rx="1" fill="#00C9A7" opacity="0.7"/>
+            </g>
+            <!-- Antenna (>=35) -->
+            <g data-area="dados" data-show-from="35">
+              <line x1="610" y1="258" x2="610" y2="236" stroke="#06b6d4" stroke-width="2"/>
+              <circle cx="610" cy="234" r="4" fill="#06b6d4"/>
+            </g>
+            <!-- Signal waves (>=60) -->
+            <g data-area="dados" data-show-from="60">
+              <ellipse cx="610" cy="234" rx="8" ry="5" fill="none" stroke="#06b6d4" stroke-width="1" opacity="0.6"/>
+              <ellipse cx="610" cy="234" rx="16" ry="10" fill="none" stroke="#06b6d4" stroke-width="1" opacity="0.3"/>
+              <ellipse cx="610" cy="234" rx="24" ry="15" fill="none" stroke="#06b6d4" stroke-width="1" opacity="0.2"/>
+            </g>
+            <!-- Label -->
+            <rect x="398" y="258" width="148" height="22" rx="4" fill="white" opacity="0.9"/>
+            <text x="472" y="273" text-anchor="middle" fill="#0e7490" style="font-size:10px;font-weight:700;font-family:Inter,sans-serif">📊 Centro de Dados Vital</text>
+            <rect x="556" y="258" width="62" height="22" rx="4" fill="#06b6d4"/>
+            <text x="587" y="273" text-anchor="middle" fill="white" id="pct-dados" style="font-size:11px;font-weight:800;font-family:Inter,sans-serif">0%</text>
+          </g>
+          <rect class="city-highlight" data-area="dados" x="390" y="249" width="276" height="62" rx="6" style="display:none"/>
+
+          <!-- ============================ PARQUE ============================ -->
+          <g id="area-parque" class="city-area">
+            <rect x="20" y="328" width="272" height="212" rx="8" fill="#d8f0d0" stroke="#b0d898" stroke-width="1"/>
+            <ellipse cx="156" cy="430" rx="90" ry="60" fill="#b8e0a0"/>
+            <ellipse cx="156" cy="430" rx="65" ry="42" fill="#c8eda8"/>
+            <ellipse cx="156" cy="430" rx="65" ry="42" fill="none" stroke="#d4c8a0" stroke-width="6" stroke-dasharray="10,5"/>
+            <!-- Trees -->
+            <rect x="77" y="396" width="6" height="12" rx="2" fill="#8B6F47"/><circle cx="80" cy="388" r="12" fill="#22c55e"/>
+            <rect x="127" y="376" width="6" height="12" rx="2" fill="#8B6F47"/><circle cx="130" cy="368" r="12" fill="#16a34a"/>
+            <rect x="187" y="381" width="6" height="12" rx="2" fill="#8B6F47"/><circle cx="190" cy="373" r="13" fill="#22c55e"/>
+            <rect x="227" y="401" width="6" height="12" rx="2" fill="#8B6F47"/><circle cx="230" cy="393" r="11" fill="#4ade80"/>
+            <rect x="237" y="456" width="6" height="12" rx="2" fill="#8B6F47"/><circle cx="240" cy="448" r="12" fill="#22c55e"/>
+            <rect x="197" y="496" width="6" height="12" rx="2" fill="#8B6F47"/><circle cx="200" cy="488" r="11" fill="#16a34a"/>
+            <rect x="97" y="494" width="6" height="12" rx="2" fill="#8B6F47"/><circle cx="100" cy="486" r="12" fill="#4ade80"/>
+            <rect x="55" y="461" width="6" height="12" rx="2" fill="#8B6F47"/><circle cx="58" cy="453" r="11" fill="#22c55e"/>
+            <!-- Bench -->
+            <rect x="136" y="422" width="40" height="8" rx="3" fill="#92400e"/>
+            <rect x="133" y="415" width="6" height="16" rx="2" fill="#78350f"/>
+            <rect x="170" y="415" width="6" height="16" rx="2" fill="#78350f"/>
+            <!-- Fountain (>=35) -->
+            <g data-area="parque" data-show-from="35">
+              <circle cx="156" cy="430" r="12" fill="#bfdbfe" stroke="#3b82f6" stroke-width="1.5"/>
+              <circle cx="156" cy="430" r="5" fill="#60a5fa"/>
+            </g>
+            <!-- Label -->
+            <rect x="28" y="508" width="152" height="28" rx="5" fill="white" opacity="0.9"/>
+            <text x="104" y="527" text-anchor="middle" fill="#166534" style="font-size:11px;font-weight:700;font-family:Inter,sans-serif">🌿 Parque do Equilíbrio</text>
+            <rect x="192" y="508" width="90" height="28" rx="5" fill="#10b981"/>
+            <text x="237" y="527" text-anchor="middle" fill="white" id="pct-parque" style="font-size:12px;font-weight:800;font-family:Inter,sans-serif">0%</text>
+          </g>
+          <rect class="city-highlight" data-area="parque" x="20" y="328" width="272" height="212" rx="8" style="display:none"/>
+
+          <!-- ============================ AVENIDAS ============================ -->
+          <g id="area-avenidas" class="city-area">
+            <rect x="388" y="328" width="272" height="212" rx="8" fill="#ede9fe" stroke="#c4b5fd" stroke-width="1"/>
+            <ellipse cx="524" cy="430" rx="100" ry="65" fill="#d4c8f0" stroke="#8b5cf6" stroke-width="8"/>
+            <ellipse cx="524" cy="430" rx="72" ry="45" fill="#c4b8e8" stroke="#8b5cf6" stroke-width="4"/>
+            <ellipse cx="524" cy="430" rx="48" ry="28" fill="#d8d0f0"/>
+            <ellipse cx="524" cy="430" rx="86" ry="55" fill="none" stroke="white" stroke-width="1" stroke-dasharray="6,6"/>
+            <!-- Runners -->
+            <g data-area="avenidas" data-show-from="20">
+              <text x="468" y="418" style="font-size:18px;font-family:Inter,sans-serif">🏃</text>
+            </g>
+            <g data-area="avenidas" data-show-from="50">
+              <text x="545" y="452" style="font-size:18px;font-family:Inter,sans-serif">🚴</text>
+            </g>
+            <g data-area="avenidas" data-show-from="70">
+              <text x="498" y="468" style="font-size:16px;font-family:Inter,sans-serif">🧘</text>
+            </g>
+            <!-- Bleachers -->
+            <rect x="398" y="360" width="55" height="35" rx="4" fill="#8b5cf6" opacity="0.7"/>
+            <rect x="401" y="362" width="49" height="7" rx="2" fill="white" opacity="0.4"/>
+            <rect x="401" y="372" width="49" height="7" rx="2" fill="white" opacity="0.4"/>
+            <rect x="401" y="382" width="49" height="7" rx="2" fill="white" opacity="0.4"/>
+            <!-- Label -->
+            <rect x="396" y="508" width="140" height="28" rx="5" fill="white" opacity="0.9"/>
+            <text x="466" y="527" text-anchor="middle" fill="#6d28d9" style="font-size:11px;font-weight:700;font-family:Inter,sans-serif">🏃 Avenidas Ativas</text>
+            <rect x="548" y="508" width="102" height="28" rx="5" fill="#8b5cf6"/>
+            <text x="599" y="527" text-anchor="middle" fill="white" id="pct-avenidas" style="font-size:12px;font-weight:800;font-family:Inter,sans-serif">0%</text>
+          </g>
+          <rect class="city-highlight" data-area="avenidas" x="388" y="328" width="272" height="212" rx="8" style="display:none"/>
+
+          <!-- CITY HALL (centro) -->
+          <g>
+            <rect x="314" y="254" width="52" height="52" rx="4" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1"/>
+            <rect x="320" y="260" width="40" height="30" rx="3" fill="#1A3A6B"/>
+            <rect x="326" y="264" width="10" height="14" rx="1" fill="#bfdbfe"/>
+            <rect x="344" y="264" width="10" height="14" rx="1" fill="#bfdbfe"/>
+            <line x1="340" y1="252" x2="340" y2="262" stroke="#64748b" stroke-width="1.5"/>
+            <rect x="340" y="249" width="14" height="8" rx="1" fill="#00C9A7"/>
+            <rect x="315" y="290" width="50" height="13" rx="3" fill="#00C9A7"/>
+            <text x="340" y="300" text-anchor="middle" fill="white" style="font-size:8px;font-weight:800;font-family:Inter,sans-serif">CARE CITY</text>
+          </g>
+
+          <!-- Decorative trees & lights -->
+          <g opacity="0.9">
+            <circle cx="30" cy="239" r="6" fill="#4ade80"/><circle cx="70" cy="239" r="6" fill="#4ade80"/>
+            <circle cx="200" cy="239" r="6" fill="#4ade80"/><circle cx="250" cy="239" r="6" fill="#4ade80"/>
+            <circle cx="430" cy="239" r="6" fill="#4ade80"/><circle cx="500" cy="239" r="6" fill="#4ade80"/>
+            <circle cx="580" cy="239" r="6" fill="#4ade80"/><circle cx="640" cy="239" r="6" fill="#4ade80"/>
+            <circle cx="295" cy="54" r="6" fill="#4ade80"/><circle cx="295" cy="134" r="6" fill="#4ade80"/>
+            <circle cx="295" cy="384" r="6" fill="#4ade80"/><circle cx="295" cy="484" r="6" fill="#4ade80"/>
+            <circle cx="382" cy="54" r="6" fill="#4ade80"/><circle cx="382" cy="154" r="6" fill="#4ade80"/>
+            <circle cx="382" cy="384" r="6" fill="#4ade80"/><circle cx="382" cy="484" r="6" fill="#4ade80"/>
+          </g>
+        </svg>
+
+        <!-- Legenda -->
+        <div class="city-legend">
+          <span class="city-legend-dot">Protegido (70–100%)</span>
+          <span class="city-legend-dot amber">Estável (35–69%)</span>
+          <span class="city-legend-dot gray">Em atenção (0–34%)</span>
+        </div>
+      </article>
+
+      <p style="text-align:center; color:var(--text-light); font-size:0.78rem; margin-top:0.75rem;">
+        <i class="bi bi-cursor-fill"></i> Passe o mouse sobre as áreas para ver detalhes
+      </p>
+    </div>
+
+    <!-- ============ PAINEL LATERAL ============ -->
+    <aside class="city-side" aria-label="Detalhes da cidade">
+
+      <article class="city-detail-card" id="detail-card">
+        <div class="city-detail-empty">
+          <div class="city-img" role="img" aria-label="Ilustração da Care City"></div>
+          <div class="city-img-text">Passe o mouse ou clique<br>em uma área da cidade</div>
+        </div>
+      </article>
+
+      <article class="cp-card" style="padding:1rem;">
+        <h3 style="font-size:0.85rem; font-weight:700; color:var(--text-main); margin:0 0 0.6rem;">
+          <i class="bi bi-list-check" style="color:var(--accent);"></i> Progresso por área
+        </h3>
+        <div id="area-list"></div>
+      </article>
+
+      <button class="btn-cp-outline" style="width:100%; font-size:0.82rem; padding:0.55rem;" onclick="resetCity()">
+        <i class="bi bi-arrow-counterclockwise"></i> Reiniciar progresso
+      </button>
+    </aside>
+
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="margin-top:2rem; text-align:center; color:var(--text-light); font-size:0.78rem;">
+    Care Plus · FIAP 2025 · Sprint 3 · Front-End Design
+  </footer>
+
+</main>
+
+<script src="js/city.js"></script>
+</body>
+</html>
